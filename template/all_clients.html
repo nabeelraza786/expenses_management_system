@@ -46,9 +46,9 @@
                         <td class="text-center">{{ client.name }}</td>
                         <td class="text-center">{{ client.direction }}</td>
                         <td class="text-center text-black">{{ client.total_expenses }}</td>
-                        <td class="text-center text-black">{{ client.total_received }}</td>
+                        <td class="text-center text-black">{{ client.total_received |floatformat:3}}</td>
                         <td class="text-center {% if client.balance < 0 %}bg-danger text-white{% else %}bg-success text-white{% endif %}">
-                            {{ client.balance }}
+                            {{ client.balance|floatformat:3 }}
                         </td>
                         <td class="text-center">
                             <div class="d-grid gap-2 d-md-flex justify-content-md-center">
