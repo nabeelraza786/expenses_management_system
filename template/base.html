@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Manager Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #4361ee;
+      --secondary-color: #3a0ca3;
+      --light-color: #f8f9fa;
+      --dark-color: #212529;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .user-profile {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid var(--primary-color);
+    }
+    .btn-custom-card {
+      min-width: 140px;
+      width: 100%;
+      max-width: 160px;
+      padding: 0.8rem;
+      font-size: 0.85rem;
+      transition: all 0.3s;
+    }
+
+    .btn-custom-card i {
+      font-size: 1.8rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .btn-custom-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .row-custom {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .col-custom {
+      flex: 0 0 auto;
+    }
+
+    @media (max-width: 767.98px) {
+      .btn-custom-card {
+        max-width: 130px;
+        padding: 0.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  {% include "header.html" %}
+
+  <main class="container mt-4">
+    {% block content %}
+    <div class="row-custom">
+      <div class="col-custom">
+        <a href="{% url 'add_new_client' %}" class="btn btn-outline-primary d-flex flex-column align-items-center justify-content-center rounded shadow btn-custom-card">
+          <i class="fas fa-users"></i>
+          <span class="mt-1"> Add Clients</span>
+        </a>
+      </div>
+
+      <div class="col-custom">
+        <a href="{% url 'add_expenses' %}" class="btn btn-primary d-flex flex-column align-items-center justify-content-center rounded shadow text-white btn-custom-card">
+          <i class="fas fa-money-check-alt"></i>
+          <span class="mt-1">Add Expenses</span>
+        </a>
+      </div>
+
+      <div class="col-custom">
+        <a href="{% url 'funds' %}" class="btn btn-primary d-flex flex-column align-items-center justify-content-center rounded shadow text-white btn-custom-card">
+          <i class="fas fa-hand-holding-usd"></i>
+          <span class="mt-1">Add Funds</span>
+        </a>
+      </div>
+
+      <div class="col-custom">
+        <a href="{% url 'add_provider' %}" class="btn btn-primary d-flex flex-column align-items-center justify-content-center rounded shadow text-white btn-custom-card">
+          <i class="fas fa-wallet"></i>
+          <span class="mt-1">Add Provider</span>
+        </a>
+      </div>
+    </div>
+    {% endblock %}
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

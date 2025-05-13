@@ -1,0 +1,63 @@
+<header>
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'base' %}">
+                <i class="fas fa-wallet"></i> ExpensePro
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'base' %}">
+                            <i class="fas fa-home"></i> Home
+                        </a>
+                    </li>
+                    {% comment %} <li class="nav-item">
+                        <a class="nav-link" href="{% url 'all_clients' %}">
+                            <i class="fas fa-users"></i> All Clients
+                        </a>
+                    </li> {% endcomment %}
+                    {% comment %} <li class="nav-item">
+                        <a class="nav-link" href="{% url 'expenses'%}">
+                            <i class="fas fa-receipt"></i> Expenses
+                        </a>
+                    </li> {% endcomment %}
+                    {% comment %} <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-chart-pie"></i> Reports
+                        </a>
+                    </li> {% endcomment %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'all_pages'%}">
+                            <i class="fas fa-file-alt"></i> All Pages
+                        </a>
+                    </li>
+                </ul>
+                
+                <div class="d-flex align-items-center">
+                    <div class="position-relative me-3">
+                        <i class="fas fa-bell fa-lg text-muted"></i>
+                        <span class="notification-badge">3</span>
+                    </div>
+                    
+                    <div class="dropdown">
+                        <a href="#" class="dropdown-toggle d-flex align-items-center text-decoration-none" id="userDropdown" data-bs-toggle="dropdown">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User" class="user-profile me-2">
+                            <span class="d-none d-sm-inline">Jamil Raza</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i> Profile</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i> Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{% url 'logout'%}"><i class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>

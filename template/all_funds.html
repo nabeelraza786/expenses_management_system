@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card shadow p-4">
+        <h2 class="mb-4 text-primary">All Funds</h2>
+
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <tbody>
+                    <!-- Client 1 -->
+                    {% comment %} <tr class="bg-primary text-white text-center">
+                        <td colspan="6"><strong>Total </strong> Page</td>
+                    </tr>  {% endcomment %}
+                    {% comment %} <tr class="bg-primary text-white text-center">
+                        <td><strong></strong> Expense</td>
+                        <td><strong></strong> Received</td>
+                        <td colspan="4"><strong></strong> Difference</td>
+                    </tr>  {% endcomment %}
+                    
+                    <!-- Table Headers -->
+                    <tr class="bg-secondary text-white text-center">
+                        <th>Date</th>
+                        <th>Client</th>
+                        <th>Bill No</th>
+                        <th>Concept</th>
+                        <th>Neto</th>
+                        <th>IVA</th>
+                        <th>Total</th>
+                        {% comment %} <th>Actions</th> <!-- Buttons Column --> {% endcomment %}
+                    </tr>
+                    <!-- Table Rows -->
+                    {% for fund in funds %}
+                    <tr>
+                        <td class="text-center">{{fund.date}}</td>
+                        <td class="text-center">{{fund.client}}</td>
+                        <td class="text-center">{{fund.bill_no}}</td>
+                        <td class="text-danger text-center">{{fund.concept}}</td>
+                        <td class="text-success text-center">{{fund.neto}}</td>
+                        <td class="text-success text-center">{{fund.iva}}</td>
+                        <td class="text-success text-center">{{fund.total}}</td>
+                        {% comment %} <td class="text-center">
+                            <button class="btn btn-sm btn-info"><i class="fas fa-eye"></i> View</button>
+                            <button class="btn btn-sm btn-warning"><i class="fas fa-edit"></i> Edit</button>
+                            <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Delete</button>
+                        </td> {% endcomment %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        {% comment %} <p class="text-center text-muted mt-3">No more Expenses available.</p> {% endcomment %}
+    </div>
+</div>
+{% endblock %}

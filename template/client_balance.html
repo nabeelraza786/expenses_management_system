@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card shadow p-4">
+        <h2 class="mb-4 text-primary">Client Balances</h2>
+
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <tbody>
+                    <!-- Client 1 -->
+                    <tr class="bg-primary text-white text-center">
+                        <td><strong>#</strong> 1</td>
+                        <td colspan="3"><strong>Client Name:</strong> John Doe</td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" class="bg-light text-center">
+                            <strong>Balance:</strong> $500.00
+                        </td>
+                    </tr>
+                    <tr class="bg-secondary text-white text-center">
+                        <th>Date</th>
+                        <th>Bill No</th>
+                        <th>Concept</th>
+                        <th>Expense</th>
+                        <th>Received</th>
+                    </tr>
+                    <tr>
+                        <td class="text-center">2024-03-20</td>
+                        <td class="text-center">Office Rent</td>
+                        <td class="text-danger text-center">$200.00</td>
+                        <td class="text-success text-center">$0.00</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">2024-03-22</td>
+                        <td class="text-center">Payment Received</td>
+                        <td class="text-danger text-center">$0.00</td>
+                        <td class="text-success text-center">$700.00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p class="text-center text-muted mt-3">No more clients available.</p>
+    </div>
+</div>
+{% endblock %}

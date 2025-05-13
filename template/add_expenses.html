@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card shadow p-4">
+        <h2 class="mb-4 text-primary">Add Expenses</h2>
+        <form method="POST" id="expenseForm">
+            {% csrf_token %}
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="date" class="form-label">Date</label>
+                    <input type="date" class="form-control" id="date" name="date" required>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="provider_id" class="form-label">Providers</label>
+                    <select class="form-control" id="provider_id" name="provider_id" required>
+                        <option value="" disabled selected>Select a Provider</option>
+                        {% for provider in providers %}
+                            <option value="{{ provider.id }}">{{ provider.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="bill_no" class="form-label">Bill No</label>
+                    <input type="text" class="form-control" id="bill_no" name="bill_no" required>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="client" class="form-label">Client</label>
+                    <select class="form-control" id="client" name="client_id" required>
+                        <option value="" disabled selected>Select a Client</option>
+                        {% for client in clients %}
+                            <option value="{{ client.id }}">{{ client.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="concept" class="form-label">Concept</label>
+                    <input type="text" class="form-control" id="concept" name="concept" required>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="neto" class="form-label">Neto</label>
+                    <input type="number" class="form-control" id="neto" name="neto" required>
+                </div>
+            </div>
+
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-3">
+                    <div class="form-check mt-4">
+                        <input class="form-check-input" type="checkbox" id="include_iva" name="include_iva" checked>
+                        <label class="form-check-label" for="include_iva">
+                            Include IVA (21%)
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="iva" class="form-label">IVA</label>
+                    <input type="text" class="form-control" id="iva" name="iva" readonly>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="total" class="form-label">Total</label>
+                    <input type="number" class="form-control" id="total" name="total" readonly>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-primary px-4">
+                    <i class="fas fa-save"></i> Save
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    const netoInput = document.getElementById('neto');
+    const ivaInput = document.getElementById('iva');
+    const totalInput = document.getElementById('total');
+    const includeIvaCheckbox = document.getElementById('include_iva');
+
+    function calculateTotals() {
+        const neto = parseFloat(netoInput.value) || 0;
+        const includeIva = includeIvaCheckbox.checked;
+
+        let iva = 0;
+        if (includeIva) {
+            iva = neto * 0.21;
+        }
+
+        const total = neto + iva;
+
+        ivaInput.value = iva.toFixed(2);
+        totalInput.value = total.toFixed(2);
+    }
+
+    netoInput.addEventListener('input', calculateTotals);
+    includeIvaCheckbox.addEventListener('change', calculateTotals);
+
+    window.addEventListener('DOMContentLoaded', calculateTotals);
+</script>
+{% endblock %}

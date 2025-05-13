@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="d-flex justify-content-center gap-4 mt-5 flex-wrap">
+    <a href="{%url 'add_new_client'%}" class="btn btn-outline-primary btn-lg d-flex flex-column align-items-center p-4 rounded shadow">
+        <i class="fas fa-users fa-3x mb-2"></i>
+        <span>Add New Client</span>
+    </a>
+
+    <a href="{%url 'all_clients'%}" class="btn btn-primary btn-lg d-flex flex-column align-items-center p-4 rounded shadow text-white">
+        <i class="fas fa-receipt fa-3x mb-2"></i>
+        <span>All Client</span>
+    </a>
+</div>
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card shadow p-4">
+        <h2 class="mb-4 text-primary">Expenses</h2>
+
+        <!-- Displaying Neto, IVA, and Total above the table -->
+        <div class="row mb-3">
+            <div class="col-md-4 text-end">
+                <strong>Total Neto:</strong>
+            </div>
+            <div class="col-md-4 text-end">
+                <strong>Total IVA:</strong>
+            </div>
+            <div class="col-md-4 text-end">
+                <strong>Total:</strong>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-md-4 text-end">
+                <span class="fw-bold">{{ total_neto }}</span>
+            </div>
+            <div class="col-md-4 text-end">
+                <span class="fw-bold">{{ total_iva }}</span>
+            </div>
+            <div class="col-md-4 text-end">
+                <span class="fw-bold">{{ total_total }}</span>
+            </div>
+        </div>
+
+        <!-- Table for Expenses -->
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped align-middle">
+                <thead class="table-secondary text-center">
+                    <tr>
+                        <th>Date</th>
+                        <th>Providers</th>
+                        <th>Client</th>
+                        <th>Bill No</th>
+                        <th>Concept</th>
+                        <th>Neto</th>
+                        <th>IVA</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for expense in expenses %}
+                    <tr>
+                        <td class="text-center">{{ expense.date }}</td>
+                        <td class="text-start">{{ expense.provider.name }}</td>
+                        <td class="text-start">{{ expense.client.name }}</td>
+                        <td class="text-center text-danger">{{ expense.bill_no }}</td>
+                        <td class="text-start text-success">{{ expense.concept }}</td>
+                        <td class="text-end text-success">{{ expense.neto }}</td>
+                        <td class="text-end text-success">{{ expense.iva }}</td>
+                        <td class="text-end text-success">{{ expense.total }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        {% if not expenses %}
+        <p class="text-center text-muted mt-3">No Expenses available.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

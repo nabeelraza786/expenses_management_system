@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row g-4 justify-content-center">
+
+        <!-- All Clients -->
+        <div class="col-6 col-sm-4 col-md-3">
+            <a href="{% url 'all_clients' %}" class="btn btn-primary w-100 btn-lg d-flex flex-column align-items-center p-4 rounded shadow text-white">
+                <i class="fas fa-users fa-3x mb-2"></i>
+                <span>All Clients</span>
+            </a>
+        </div>
+
+        <!-- Expenses -->
+        <div class="col-6 col-sm-4 col-md-3">
+            <a href="{% url 'expenses' %}" class="btn btn-danger w-100 btn-lg d-flex flex-column align-items-center p-4 rounded shadow text-white">
+                <i class="fas fa-money-bill-wave fa-3x mb-2"></i>
+                <span>Total Expenses</span>
+            </a>
+        </div>
+
+        <!-- Received Payments -->
+        <div class="col-6 col-sm-4 col-md-3">
+            <a href="#" class="btn btn-success w-100 btn-lg d-flex flex-column align-items-center p-4 rounded shadow text-white">
+                <i class="fas fa-hand-holding-usd fa-3x mb-2"></i>
+                <span>Received Payments</span>
+            </a>
+        </div>
+
+        <!-- Client Balance -->
+        <div class="col-6 col-sm-4 col-md-3">
+            <a href="{% url 'Client_balance' %}" class="btn btn-warning w-100 btn-lg d-flex flex-column align-items-center p-4 rounded shadow text-white">
+                <i class="fas fa-balance-scale fa-3x mb-2"></i>
+                <span>Client Balance</span>
+            </a>
+        </div>
+
+        <!-- Reports -->
+        <div class="col-6 col-sm-4 col-md-3">
+            <a href="#" class="btn btn-info w-100 btn-lg d-flex flex-column align-items-center p-4 rounded shadow text-white">
+                <i class="fas fa-chart-line fa-3x mb-2"></i>
+                <span>Reports</span>
+            </a>
+        </div>
+
+        <!-- Total Pages -->
+        <div class="col-6 col-sm-4 col-md-3">
+            <a href="{% url 'Total_page' %}" class="btn btn-secondary w-100 btn-lg d-flex flex-column align-items-center p-4 rounded shadow text-white">
+                <i class="fas fa-file-alt fa-3x mb-2"></i>
+                <span>Total Pages</span>
+            </a>
+        </div>
+
+        <!-- All Providers -->
+        <div class="col-6 col-sm-4 col-md-3">
+            <a href="{% url 'all_providers' %}" class="btn btn-outline-primary w-100 btn-lg d-flex flex-column align-items-center p-4 rounded shadow">
+                <i class="fas fa-user fa-3x mb-2"></i>
+                <span>All Providers</span>
+            </a>
+        </div>
+
+        <!-- All Funds -->
+        <div class="col-6 col-sm-4 col-md-3">
+            <a href="{% url 'all_funds' %}" class="btn btn-outline-primary w-100 btn-lg d-flex flex-column align-items-center p-4 rounded shadow">
+                <i class="fas fa-user fa-3x mb-2"></i>
+                <span>All Funds</span>
+            </a>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

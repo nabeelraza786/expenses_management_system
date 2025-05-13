@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card shadow p-4">
+        <h2 class="mb-4 text-primary">Total Page</h2>
+
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <tbody>
+                    <!-- Client 1 -->
+                    <tr class="bg-primary text-white text-center">
+                        <td colspan="6"><strong>Total </strong> Page</td>
+                    </tr> 
+                    <tr class="bg-primary text-white text-center">
+                        <td><strong></strong> Expense</td>
+                        <td><strong></strong> Received</td>
+                        <td colspan="4"><strong></strong> Difference</td>
+                    </tr> 
+                    
+                    <!-- Table Headers -->
+                    <tr class="bg-secondary text-white text-center">
+                        <th>Date</th>
+                        <th>Client</th>
+                        <th>Concept</th>
+                        <th>Expenses</th>
+                        <th>Received</th>
+                        <th>Actions</th> <!-- Buttons Column -->
+                    </tr>
+
+                    <!-- Table Rows -->
+                    <tr>
+                        <td class="text-center">2024-03-20</td>
+                        <td class="text-center">Jameel raza</td>
+                        <td class="text-center">Office Rent</td>
+                        <td class="text-danger text-center">$200.00</td>
+                        <td class="text-success text-center">$0.00</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-info"><i class="fas fa-eye"></i> View</button>
+                            <button class="btn btn-sm btn-warning"><i class="fas fa-edit"></i> Edit</button>
+                            <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">2024-03-22</td>
+                        <td class="text-center">Jameel raza</td>
+                        <td class="text-center">Payment Received</td>
+                        <td class="text-danger text-center">$0.00</td>
+                        <td class="text-success text-center">$700.00</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-info"><i class="fas fa-eye"></i> View</button>
+                            <button class="btn btn-sm btn-warning"><i class="fas fa-edit"></i> Edit</button>
+                            <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p class="text-center text-muted mt-3">No more Expenses available.</p>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card shadow p-4">
+        <h2 class="mb-4 text-primary">All Providers</h2>
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead class="bg-secondary text-white text-center">
+                    <tr>
+                        <th>Name</th>
+                        <th>CIF/NIF</th>
+                        <th>Direction</th>
+                        <th class="d-none d-md-table-cell">Postal Code</th>
+                        <th>City</th>
+                        <th class="d-none d-md-table-cell">Province</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Account No</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for provider in providers %}
+                    <tr>
+                        <td class="text-center text-md-start">{{ provider.name }}</td>
+                        <td class="text-center text-md-start">{{ provider.cif_cif }}</td>
+                        <td class="text-center text-md-start">{{ provider.direction }}</td>
+                        <td class="text-danger text-center d-none d-md-table-cell">{{ provider.postal_code }}</td>
+                        <td class="text-success text-center text-md-start">{{ provider.city }}</td>
+                        <td class="text-success text-center d-none d-md-table-cell">{{ provider.province }}</td>
+                        <td class="text-success text-center text-md-start text-nowrap">{{ provider.phone }}</td>
+                        <td class="text-success text-center text-md-start text-nowrap">{{ provider.email }}</td>
+                        <td class="text-success text-center text-md-start text-nowrap">{{ provider.account_number }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

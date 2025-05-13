@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <!-- Client Details Section -->
+    <div class="card shadow p-3 mb-4">
+        <h3 class="text-primary mb-3" style="font-size: 1.5rem;">{{ client.name }}</h3>
+
+        <!-- 📦 Client Details in Smaller Boxes -->
+        <div class="row g-3">
+            <div class="col-sm-6 col-md-4">
+                <div class="border rounded p-2 bg-light shadow-sm">
+                    <strong class="text-muted" style="font-size: 0.9rem;">Name</strong>
+                    <div style="font-size: 0.85rem;">{{client.name}}</div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="border rounded p-2 bg-light shadow-sm">
+                    <strong class="text-muted" style="font-size: 0.9rem;">CIF/NIF</strong>
+                    <div style="font-size: 0.85rem;">{{ client.cif_nif }}</div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="border rounded p-2 bg-light shadow-sm">
+                    <strong class="text-muted" style="font-size: 0.9rem;">Direction</strong>
+                    <div style="font-size: 0.85rem;">{{ client.direction }}</div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="border rounded p-2 bg-light shadow-sm">
+                    <strong class="text-muted" style="font-size: 0.9rem;">Postal Code</strong>
+                    <div style="font-size: 0.85rem;">{{ client.postal_code }}</div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="border rounded p-2 bg-light shadow-sm">
+                    <strong class="text-muted" style="font-size: 0.9rem;">City</strong>
+                    <div style="font-size: 0.85rem;">{{ client.city }}</div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="border rounded p-2 bg-light shadow-sm">
+                    <strong class="text-muted" style="font-size: 0.9rem;">Province</strong>
+                    <div style="font-size: 0.85rem;">{{ client.province }}</div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="border rounded p-2 bg-light shadow-sm">
+                    <strong class="text-muted" style="font-size: 0.9rem;">Phone</strong>
+                    <div style="font-size: 0.85rem;">{{ client.phone }}</div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="border rounded p-2 bg-light shadow-sm">
+                    <strong class="text-muted" style="font-size: 0.9rem;">Email</strong>
+                    <div style="font-size: 0.85rem;">{{ client.email }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card shadow p-3 mb-4 bg-light">
+        <div class="row text-center">
+            <div class="col-md-4">
+                <h5 class="text-success">Received Funds</h5>
+                <h4>{{ tsf}}</h4>
+            </div>
+            <div class="col-md-4">
+                <h5 class="text-danger">Expenses</h5>
+                <h4>{{total_sum}}</h4>
+            </div>
+            <div class="col-md-4">
+                <h5 class="text-primary">Total Balance</h5>
+                <h4>{{remaining_balance}}</h4>
+            </div>
+        </div>
+        <div class="text-center mt-2">
+            <small class="text-muted">Received funds= {{tsf}} - Expenses= {{total_sum}} = Total balance= {{remaining_balance}}</small>
+        </div>
+    </div>
+    <!-- 📋 Expenses Table -->
+    <div class="card shadow p-3 mb-4">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="bg-secondary text-white text-center">
+                    <tr>
+                        <th>Date</th>
+                        <th>Proveedor</th>
+                        <th>Concept</th>
+                        <th>Bill No</th>
+                        <th>Net</th>
+                        <th>Iva</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for expense in expenses %}
+                    <tr class="text-center">
+                        <td>{{ expense.date }}</td>
+                        <td>{{ expense.provider.name }}</td>
+                        <td>{{ expense.concept }}</td>
+                        <td>{{ expense.bill_no }}</td>
+                        <td>${{ expense.neto }}</td>
+                        <td>${{ expense.iva }}</td>
+                        <td class="text-danger"><strong>${{ expense.total }}</strong></td>
+                    </tr>
+                    
+                    {% empty %}
+                    <tr>
+                        <td colspan="7" class="text-center text-muted">No records found for this client.</td>
+                    </tr>
+                    {% endfor %}
+                    <tr class="text-center bg-light">
+                        <td colspan="6" class="text-end"><strong>Total:</strong></td>
+                        <td class="text-danger"><strong>${{ total_sum }}</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- 📊 Summary Table -->
+    <h3 class="text-primary mb-3" style="font-size: 1.5rem;">Received</h3>
+    <div class="card shadow p-3">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="bg-secondary text-white text-center">
+                    <tr>
+                        <th>Date</th>
+                        <th>Concept</th>
+                        <th>Bill No</th>
+                        <th>Net</th>
+                        <th>Iva</th>
+                        <th>Tot</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for fund in funds_recevied%}
+                    <tr class="text-center">
+                        <td>{{ fund.date }}</td>
+                        <td>{{ fund.concept }}</td>
+                        <td>{{ fund.bill_no }}</td>
+                        <td>${{ fund.neto }}</td>
+                        <td>${{ fund.iva }}</td>
+                        <td class="text-danger"><strong>${{ fund.total }}</strong></td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="6" class="text-center text-muted">No records found for this client.</td>
+                    </tr>
+                    {% endfor %}
+                    <tr class="text-center bg-light">
+                        <td colspan="5" class="text-end"><strong>Total:</strong></td>
+                        <td class="text-danger"><strong>${{ tsf }}</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
